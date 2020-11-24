@@ -1,11 +1,13 @@
 import React from 'react'
+import NavBar from '../components/NavBar'
 
 
 
 function PokedexPage() {
   return (
     <div>
-       <p>PokedexPage</p>
+      <NavBar/>
+      <p>PokedexPage</p>
     </div>
        
   );
