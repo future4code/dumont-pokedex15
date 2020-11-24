@@ -1,9 +1,9 @@
 # POKEDEX
 
 Nome dos integrantes: 
-- Pessoa 1
-- Pessoa 2
-- Pessoa 3
+- Evelyn Dantas
+- Fernanda Alfonsi
+- Wellington de Brito
 
 Link do Surge: www.link.com.br
 
