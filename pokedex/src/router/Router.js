@@ -1,5 +1,5 @@
 import React from 'react'
-import HomePage from '../components/HomePage'
+import HomePage from '../components/HomePage/HomePage'
 import PokeDetailsPage from '../components/PokeDetailsPage'
 import PokedexPage from '../components/PokeDex/PokedexPage'
 import ErrorPage from '../components/ErrorPage'
