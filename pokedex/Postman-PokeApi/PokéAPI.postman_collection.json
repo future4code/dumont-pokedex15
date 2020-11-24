@@ -7,28 +7,6 @@
 	},
 	"item": [
 		{
-			"name": "Get Pokemon Abilities",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "https://pokeapi.co/api/v2/ability",
-					"protocol": "https",
-					"host": [
-						"pokeapi",
-						"co"
-					],
-					"path": [
-						"api",
-						"v2",
-						"ability"
-					]
-				},
-				"description": "Faz um requisito pelas abilidades do pokemon."
-			},
-			"response": []
-		},
-		{
 			"name": "Get Pokemon by Id",
 			"request": {
 				"method": "GET",
@@ -58,6 +36,35 @@
 				"url": {
 					"raw": ""
 				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Pokemon Array",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://pokeapi.co/api/v2/pokemon/?limit=20",
+					"protocol": "https",
+					"host": [
+						"pokeapi",
+						"co"
+					],
+					"path": [
+						"api",
+						"v2",
+						"pokemon",
+						""
+					],
+					"query": [
+						{
+							"key": "limit",
+							"value": "20"
+						}
+					]
+				},
+				"description": "Faz a requisição de um array com uma quantidade específica passada."
 			},
 			"response": []
 		}
