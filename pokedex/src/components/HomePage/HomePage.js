@@ -1,8 +1,14 @@
 import React from 'react'
 import NavBar from '../NavBar'
 import { ButtonContainer, CardContainer, ImageCardContainer, MainContainer } from './styles';
+import { useHistory } from 'react-router-dom';
 
 function HomePage() {
+  const history=useHistory()
+
+  const goToPokeDetail=()=>{
+    history.push(`pokeDetails/:id`)
+  }
   return (
     <div>
       <NavBar/>
@@ -13,7 +19,7 @@ function HomePage() {
             </ImageCardContainer>
             <ButtonContainer>
                 <button>Adicionar a pokédex</button>
-                <button>Ver detalhes</button>
+                <button onClick={()=>goToPokeDetail()}>Ver detalhes</button>
             </ButtonContainer>
           </CardContainer>
           <CardContainer>
@@ -22,7 +28,7 @@ function HomePage() {
             </ImageCardContainer>
             <ButtonContainer>
                 <button>Adicionar a pokédex</button>
-                <button>Ver detalhes</button>
+                <button onClick={()=>goToPokeDetail()}>Ver detalhes</button>
             </ButtonContainer>
           </CardContainer><CardContainer>
             <ImageCardContainer>
@@ -30,7 +36,7 @@ function HomePage() {
             </ImageCardContainer>
             <ButtonContainer>
                 <button>Adicionar a pokédex</button>
-                <button>Ver detalhes</button>
+                <button onClick={()=>goToPokeDetail()}>Ver detalhes</button>
             </ButtonContainer>
           </CardContainer><CardContainer>
             <ImageCardContainer>
@@ -38,7 +44,7 @@ function HomePage() {
             </ImageCardContainer>
             <ButtonContainer>
                 <button>Adicionar a pokédex</button>
-                <button>Ver detalhes</button>
+                <button onClick={()=>goToPokeDetail()}>Ver detalhes</button>
             </ButtonContainer>
           </CardContainer><CardContainer>
             <ImageCardContainer>

@@ -1,6 +1,6 @@
 import React from 'react'
 import HomePage from '../components/HomePage/HomePage'
-import PokeDetailsPage from '../components/PokeDetailsPage'
+import PokeDetailsPage from '../components/PokeDetails/PokeDetailsPage'
 import PokedexPage from '../components/PokeDex/PokedexPage'
 import ErrorPage from '../components/ErrorPage'
 import { BrowserRouter, Route, Switch } from "react-router-dom"
