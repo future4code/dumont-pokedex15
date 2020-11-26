@@ -1,8 +1,8 @@
 import React from 'react'
-import HomePage from '../components/HomePage/HomePage'
-import PokeDetailsPage from '../components/PokeDetails/PokeDetailsPage'
-import PokedexPage from '../components/PokeDex/PokedexPage'
-import ErrorPage from '../components/ErrorPage'
+import HomePage from '../pages/HomePage/HomePage'
+import PokeDetailsPage from '../pages/PokeDetails/PokeDetailsPage'
+import PokedexPage from '../pages/PokeDex/PokedexPage'
+import ErrorPage from '../pages/ErrorPage'
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 
 function Router() {
