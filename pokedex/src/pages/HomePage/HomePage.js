@@ -1,28 +1,33 @@
-import React from 'react'
-import NavBar from '../NavBar'
-import { ButtonContainer, CardContainer, ImageCardContainer, MainContainer } from './styles';
-import { useHistory } from 'react-router-dom';
+import React, { useEffect, useContext } from "react";
+import NavBar from '../../components/NavBar'
+import { MainContainer } from './styles';
 
+import GlobalStateContext from "../../global/GlobalStateContext";
+import CardPokemon from "../../components/CardPokemon"
 function HomePage() {
-  const history=useHistory()
+  const { states, requests } = useContext(GlobalStateContext)
+  // const pokemons = request.getArrayPokemons()
 
-  const goToPokeDetail=()=>{
-    history.push(`pokeDetails/:id`)
-  }
+  useEffect(() => {
+    requests.getArrayPokemons();
+  }, []);
+
+  
   return (
     <div>
       <NavBar/>
       <MainContainer>
-        <CardContainer>
-            <ImageCardContainer>
-                <img src='https://picsum.photos/70/?random=1'/>
-            </ImageCardContainer>
-            <ButtonContainer>
-                <button>Adicionar a pokédex</button>
-                <button onClick={()=>goToPokeDetail()}>Ver detalhes</button>
-            </ButtonContainer>
-          </CardContainer>
-          <CardContainer>
+        {states.pokemonList.map((item)=>{
+        return( 
+          <CardPokemon
+            name={item.name}
+            url={item.url}
+          />
+          // 
+        );
+      })}
+        
+          {/* <CardContainer>
             <ImageCardContainer>
                 <img src='https://picsum.photos/70/?random=2'/>
             </ImageCardContainer>
@@ -184,7 +189,7 @@ function HomePage() {
                 <button>Adicionar a pokédex</button>
                 <button>Ver detalhes</button>
             </ButtonContainer>
-          </CardContainer>
+          </CardContainer> */}
         </MainContainer>
     </div>
        

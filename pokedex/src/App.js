@@ -1,6 +1,7 @@
 import React from 'react'
 import Router from './router/Router'
 import styled from 'styled-components'
+import GlobalState from "./global/GlobalState";
 
 
 const AppContainer=styled.div`
@@ -18,7 +19,9 @@ background-size:cover;
 function App() {
   return (
     <AppContainer>
-      <Router/>
+      <GlobalState>
+        <Router/>
+      </GlobalState>
     </AppContainer>
        
   );
