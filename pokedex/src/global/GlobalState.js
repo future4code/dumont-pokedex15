@@ -1,12 +1,21 @@
 import React, { useState } from "react";
 import axios from "axios";
 import GlobalStateContext from "./GlobalStateContext";
-// import { useHistory } from 'react-router-dom';
+
 
 const GlobalState = (props) => {
   const [pokemonList, setPokemonList] = useState([]);
   const [pokeDex, setPokeDex] = useState([]);
-  
+  const [pokeDetail, setPokeDetail] = useState({
+    thisPokemon:[
+      {
+        stats:[''],
+       
+    
+    }
+    ]
+
+  })
 
   const BASE_URL= "https://pokeapi.co/api/v2"
 
@@ -23,8 +32,8 @@ const GlobalState = (props) => {
     })
   };
 
-  const states = { pokemonList, pokeDex };
-  const setters = { setPokemonList, setPokeDex };
+  const states = { pokemonList, pokeDex,pokeDetail };
+  const setters = { setPokemonList, setPokeDex,setPokeDetail };
   const requests = {getArrayPokemons};
 
   const data = { states, setters, requests };

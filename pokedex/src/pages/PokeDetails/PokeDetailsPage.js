@@ -1,10 +1,12 @@
-import React from 'react'
+import React, {useContext}from 'react'
 // import NavBar from '../components/NavBar'
 import { ContainerPokeName,ContainerDetails,ContainerImg,DetailCardPhoto,DetailCardInfo,ContainerTypeMove, DetailCardTypes,DetailCardMoves} from './detailStyles';
-import { useHistory } from 'react-router-dom';
-
+import { useHistory} from 'react-router-dom';
+import GlobalStateContext from "../../global/GlobalStateContext";
 
 function PokeDetailsPage() {
+ 
+  const { states, setters, requests } = useContext(GlobalStateContext)
   const history=useHistory()
 
   const goToPokedex=()=>{
@@ -31,13 +33,21 @@ function PokeDetailsPage() {
 
       
       <DetailCardInfo>
-        <h4>Status</h4>
-        <p>HP: 46</p>
-        <p>Attack: 46</p>
-        <p>Defense: 46</p>
-        <p>Special-attack: 46</p>
-        <p>Special-defense: 46</p>
-        <p>speed: 46</p>
+      {/* <h4>Status</h4>
+        {states.pokeDetail.stats.map((item)=>{
+          return(
+            <div>
+                <p>HP: {item.base_stat}</p>
+                <p>Attack: 46</p>
+                <p>Defense: 46</p>
+                <p>Special-attack: 46</p>
+                <p>Special-defense: 46</p>
+                <p>speed: 46</p>
+            </div>
+          );
+        })} */}
+        
+        
         
       </DetailCardInfo>
 
