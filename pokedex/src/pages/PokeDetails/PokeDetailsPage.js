@@ -2,6 +2,7 @@ import React from 'react'
 // import NavBar from '../components/NavBar'
 import { ContainerPokeName,ContainerDetails,ContainerImg,DetailCardPhoto,DetailCardInfo,ContainerTypeMove, DetailCardTypes,DetailCardMoves} from './detailStyles';
 import { useHistory } from 'react-router-dom';
+import NavBar from '../../components/NavBar';
 
 
 function PokeDetailsPage() {
@@ -11,7 +12,7 @@ function PokeDetailsPage() {
     history.push(`/pokedexPage`)
   } 
   return (<div>
-    {/* <NavBar/> */}
+    <NavBar />
     <ContainerPokeName>
       <button onClick={goToPokedex}>voltar</button>
       <h1>Nome do pokemon</h1>
