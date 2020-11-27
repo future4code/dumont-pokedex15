@@ -7,23 +7,20 @@ import { ButtonContainer, DetailsButton, HeaderPokedex, MainContainer, PokeCard,
 
 function PokeBall(props) {
  
-  const [pokeImage, setPokeImage] = useState([])
-  
+  const [pokeName, setPokeName] = useState({})
+  const [pokeImage, setPokeImage] = useState({})
 
- 
-  
   useEffect(()=>{
-    getPokeImage()
+    getPokeData()
   },[])
-
-  
  
-  const getPokeImage =()=>{
+  const getPokeData=()=>{
     axios
     .get(props.url)
     .then((response)=>{
         setPokeImage(response.data.sprites.front_default)
-         
+        // setPokeName(response.data.name)
+         console.log("DATA",response.data)
             
     })
     .catch((err)=>{ console.log(err.mensage)})
@@ -32,8 +29,8 @@ function PokeBall(props) {
     <div>          
         <PokeCard>
           <Pokemon>
-            <img src={pokeImage} />
-            <p>{props.name}</p>
+                <img src={pokeImage} />
+                {/* <p>{pokeName}</p> */}
           </Pokemon>
           <ButtonContainer>
             <RemoveButton onClick={props.removePokemon}>Deletar</RemoveButton>
@@ -43,5 +40,4 @@ function PokeBall(props) {
      </div>  
   );
 }
-
 export default PokeBall;
