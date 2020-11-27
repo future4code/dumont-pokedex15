@@ -1,74 +1,65 @@
-import React, {useContext}from 'react'
-import NavBar from '../components/NavBar'
+import React, { useState, useEffect }from 'react'
 import { ContainerPokeName,ContainerDetails,ContainerImg,DetailCardPhoto,DetailCardInfo,ContainerTypeMove, DetailCardTypes,DetailCardMoves} from './detailStyles';
-import { useHistory} from 'react-router-dom';
-import GlobalStateContext from "../../global/GlobalStateContext";
-
+import { useHistory, useParams} from 'react-router-dom';
+import axios from 'axios'
+import NavBar from '../../components/NavBar'
 function PokeDetailsPage() {
  
-  const { states, setters, requests } = useContext(GlobalStateContext)
+  
   const history=useHistory()
+
+  const BASE_URL= "https://pokeapi.co/api/v2"
+
+  const [pokeDetail, setPokeDetail] = useState(undefined)
+ 
+  const pathParams = useParams()
+  const id = pathParams.id
+
+  useEffect(()=>{
+    getDetails()
+  },[])
 
   const goToPokedex=()=>{
     history.push(`/pokedexPage`)
   } 
-  return (<div>
-    <NavBar />
-    <ContainerPokeName>
-      <button onClick={goToPokedex}>voltar</button>
-      <h1>Nome do pokemon</h1>
-      <button onClick={""}>X</button>
-    </ContainerPokeName>
 
-    <ContainerDetails>
-
-      <ContainerImg>
-        < DetailCardPhoto>
-          <img src="https://i.pinimg.com/originals/f5/1d/08/f51d08be05919290355ac004cdd5c2d6.png"/>
-        </ DetailCardPhoto>
-        < DetailCardPhoto>
-          <img src="https://i.pinimg.com/originals/f5/1d/08/f51d08be05919290355ac004cdd5c2d6.png"/>
-        </ DetailCardPhoto>
-      </ContainerImg>
-
-      
-      <DetailCardInfo>
-      {/* <h4>Status</h4>
-        {states.pokeDetail.stats.map((item)=>{
-          return(
-            <div>
-                <p>HP: {item.base_stat}</p>
-                <p>Attack: 46</p>
-                <p>Defense: 46</p>
-                <p>Special-attack: 46</p>
-                <p>Special-defense: 46</p>
-                <p>speed: 46</p>
-            </div>
-          );
-        })} */}
+  const getDetails = () => {
+    axios.get(`${BASE_URL}/pokemon/${id}`)
+      .then((response)=>{
+        setPokeDetail(response.data)
         
-        
-        
-      </DetailCardInfo>
+      }).catch((error)=>{
+        console.log(error)
+      })
+  }
 
-      <ContainerTypeMove>
-        <DetailCardTypes>
-          <h4>Type 1</h4>
-          <h4>Type 2</h4>
-        </DetailCardTypes>
-            
-        <DetailCardMoves>
-          <h4> Moves</h4>
-          <p> moves name 1</p>
-          <p> moves name 2</p>
-          <p> moves name 3</p>
-        </DetailCardMoves>
-      </ContainerTypeMove>
-    </ContainerDetails>
+  return (
+    <div>
+      <NavBar/>
+    {pokeDetail && (
+      <div>
+        
+          <ContainerPokeName>
+            <h1>{pokeDetail.name}</h1>
+          </ContainerPokeName>
+                      
+            <DetailCardPhoto >
+                <img src={pokeDetail.sprites.front_default} />
+            </DetailCardPhoto>
+            <DetailCardPhoto >
+                <img src={pokeDetail.sprites.back_default} />
+            </DetailCardPhoto>
+            <DetailCardInfo>
+              {pokeDetail.stats.map((pokemon)=>{
+                return <p>{pokemon.stat.name}: {pokemon.base_stat}</p>
+              })}
+            </DetailCardInfo>
+          
+        
+        </div>
+    )}
   </div>
-    
-       
-  );
+)
 }
 
 export default PokeDetailsPage;

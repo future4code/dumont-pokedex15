@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import GlobalStateContext from "./GlobalStateContext";
 
@@ -6,20 +6,13 @@ import GlobalStateContext from "./GlobalStateContext";
 const GlobalState = (props) => {
   const [pokemonList, setPokemonList] = useState([]);
   const [pokeDex, setPokeDex] = useState([]);
-  const [pokeDetail, setPokeDetail] = useState({
-    thisPokemon:[
-      {
-        stats:[''],
-       
-    
-    }
-    ]
-
-  })
+  
 
   const BASE_URL= "https://pokeapi.co/api/v2"
 
-  
+  useEffect(() => {
+    getArrayPokemons();
+  }, []);
 
   const getArrayPokemons = () => {
     axios
@@ -32,8 +25,8 @@ const GlobalState = (props) => {
     })
   };
 
-  const states = { pokemonList, pokeDex,pokeDetail };
-  const setters = { setPokemonList, setPokeDex,setPokeDetail };
+  const states = { pokemonList, pokeDex };
+  const setters = { setPokemonList, setPokeDex };
   const requests = {getArrayPokemons};
 
   const data = { states, setters, requests };
