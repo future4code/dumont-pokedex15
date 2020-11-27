@@ -9,16 +9,26 @@ function CardPokemon(props){
     
     const { states,setters } = useContext(GlobalStateContext)
 
+    const BASE_URL= "https://pokeapi.co/api/v2"
+
     const history=useHistory()
 
-  const goToPokeDetail=(id)=>{
-    history.push(`pokeDetails/${id}`)
-  }
-  useEffect(()=>{
-    getPokeImage()
-  },[])
+    useEffect(()=>{
+        getPokeImage()
+      },[])
 
-  const getPokeImage =()=>{
+    const goToPokeDetail=(id)=>{
+        axios.get(`${BASE_URL}/pokemon/${id}`)
+        .then((response)=>{
+          history.push(`pokeDetails/${id}`)
+        }).catch((error)=>{
+          console.log(error)
+        })
+        
+    }
+
+ 
+    const getPokeImage =()=>{
       axios
       .get(props.url)
       .then((response)=>{
@@ -37,7 +47,7 @@ function CardPokemon(props){
                 <p>{props.name}</p>
             </ImageCardContainer>
             <ButtonContainer>
-                <button>Adicionar a pokédex</button>
+                <button onClick={props.addPokemon}>Adicionar a pokédex</button>
                 <button 
                 onClick={()=>goToPokeDetail(props.name)
                 }>Ver detalhes</button>
