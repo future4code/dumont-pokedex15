@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PokeBall from './PokeBall';
 import { HeaderPokedex, MainContainer, GoToBack, PokeCard, PokemonImg } from './PokedexStyle';
 import NavBar from '../../components/NavBar'
@@ -24,12 +24,18 @@ function PokedexPage() {
     })
     
 }
+// useEffect(()=>{
+//   deletePokemon()
+// },[])
 
 const deletePokemon = (remove) => {
   const index = states.pokeDex.findIndex((i) => i.name === remove.name)
   let newPokeDex = [...states.pokeDex]
   newPokeDex.splice(index, 1)
   setters.setPokeDex(newPokeDex)
+ 
+  console.log(`INDEX`,index)
+  console.log("POKEDEX", states.pokeDex)
 }
 
   return (
@@ -39,7 +45,7 @@ const deletePokemon = (remove) => {
         return(
         <MainContainer>
          <PokeBall
-          name={pokemon.name}
+          // name={pokemon.name}
           url={pokemon.url}
           pokeDetail = {()=>goToPokeDetail(pokemon.name)}
           removePokemon = {()=>deletePokemon(pokemon)}
