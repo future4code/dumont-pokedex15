@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ButtonContainer, CardContainer, ImageCardContainer} from '../pages/HomePage/styles';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
@@ -7,8 +7,7 @@ function CardPokemon(props){
 
     const [pokeImage, setPokeImage] = useState([])
     
-    const { states,setters } = useContext(GlobalStateContext)
-
+    
     const BASE_URL= "https://pokeapi.co/api/v2"
 
     const history=useHistory()
@@ -33,11 +32,7 @@ function CardPokemon(props){
       .get(props.url)
       .then((response)=>{
           setPokeImage(response.data.sprites.front_default)
-          
-          let thisPokemon = [response.data]
-          setters.setPokeDetail([thisPokemon])
-          console.log("ESTADOS", thisPokemon)
-      })
+       })
       .catch((err)=>{ console.log(err.mensage)})
   }
     return(
