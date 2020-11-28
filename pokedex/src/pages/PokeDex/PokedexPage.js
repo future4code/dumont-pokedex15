@@ -28,14 +28,28 @@ function PokedexPage() {
 //   deletePokemon()
 // },[])
 
-const deletePokemon = (remove) => {
-  const index = states.pokeDex.findIndex((i) => i.name === remove.name)
-  let newPokeDex = [...states.pokeDex]
-  newPokeDex.splice(index, 1)
-  setters.setPokeDex(newPokeDex)
+// const deletePokemon = (remove) => {
+//   const index = states.pokeDex.findIndex((i) => i.name === remove.name)
+//   let newPokeDex = [...states.pokeDex]
+//   newPokeDex.splice(index, 1)
+//   setters.setPokeDex(newPokeDex)
  
-  console.log(`INDEX`,index)
+//   console.log(`INDEX`,index)
+//   console.log("POKEDEX", states.pokeDex)
+// }
+
+const deletePokemon=(selectPokemon) =>{
+  const newPokedex = states.pokeDex.filter((pokemon)=>{
+    return pokemon.name !==selectPokemon.name
+  })
+  const newPokeList = [...states.pokemonList, selectPokemon]
+  setters.setPokeDex(newPokedex)
+  setters.setPokemonList(newPokeList)
+  window.alert(`${selectPokemon.name} foi removido da sua pokédex`)
+
+  // console.log(`INDEX`,index)
   console.log("POKEDEX", states.pokeDex)
+
 }
 
   return (
@@ -45,7 +59,6 @@ const deletePokemon = (remove) => {
         return(
         <MainContainer>
          <PokeBall
-          // name={pokemon.name}
           url={pokemon.url}
           pokeDetail = {()=>goToPokeDetail(pokemon.name)}
           removePokemon = {()=>deletePokemon(pokemon)}
