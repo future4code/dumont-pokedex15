@@ -1,6 +1,6 @@
 import React from 'react'
 import PokeBall from './PokeBall';
-import { HeaderPokedex, MainContainer, GoToBack, PokeCard, PokemonImg } from './PokedexStyle';
+import {  MainContainer, GoToBack, PokeCard, PokemonImg } from './PokedexStyle';
 import NavBar from '../../components/NavBar'
 import { useContext } from 'react';
 import GlobalStateContext from '../../global/GlobalStateContext'
@@ -35,19 +35,18 @@ const deletePokemon = (remove) => {
   return (
     <div>
       <NavBar/>
+      <MainContainer>
       {states.pokeDex.map((pokemon)=>{
         return(
-        <MainContainer>
          <PokeBall
           name={pokemon.name}
           url={pokemon.url}
           pokeDetail = {()=>goToPokeDetail(pokemon.name)}
           removePokemon = {()=>deletePokemon(pokemon)}
           />
-        </MainContainer>
         )
       })}
-      
+     </MainContainer> 
     </div>  
   );
 }
