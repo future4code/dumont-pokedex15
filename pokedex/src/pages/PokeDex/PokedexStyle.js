@@ -48,7 +48,7 @@ export const ButtonContainer = styled.div `
 
 `;
 
-export const RemoveButton = styled.div`
+export const RemoveButton = styled.button`
     background-color: #EED535;
     width: 100px;
     height: 30px;
@@ -60,8 +60,9 @@ export const RemoveButton = styled.div`
     border-radius: 5px;
     margin-bottom: 20px;
     cursor: pointer;
+    border: none;
 `
-export const DetailsButton = styled.div`
+export const DetailsButton = styled.button`
     background-color: #EED535;
     width: 100px;
     height: 30px;
@@ -72,4 +73,5 @@ export const DetailsButton = styled.div`
     border-radius: 5px;
     margin-bottom: 20px;
     cursor: pointer;
+    border: none;
 `
