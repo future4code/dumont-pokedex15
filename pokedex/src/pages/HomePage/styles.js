@@ -45,7 +45,7 @@ export const ButtonContainer = styled.div `
 
 `;
 
-export const AddPokemon = styled.div`
+export const AddPokemon = styled.button`
     background-color: #EED535;
     width: 100px;
     height: 30px;
@@ -57,8 +57,9 @@ export const AddPokemon = styled.div`
     border-radius: 5px;
     margin-bottom: 20px;
     cursor: pointer;
+    border: none;
 `
-export const Details = styled.div`
+export const Details = styled.button`
     background-color: #EED535;
     width: 100px;
     height: 30px;
@@ -69,4 +70,5 @@ export const Details = styled.div`
     border-radius: 5px;
     margin-bottom: 20px;
     cursor: pointer;
+    border: none;
 `
