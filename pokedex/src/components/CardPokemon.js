@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { ButtonContainer, CardContainer, ImageCardContainer} from '../pages/HomePage/styles';
+import { AddPokemon, ButtonContainer, CardContainer, Details, ImageCardContainer, PokeInfo} from '../pages/HomePage/styles';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 import GlobalStateContext from "../global/GlobalStateContext";
@@ -39,13 +39,14 @@ function CardPokemon(props){
         <CardContainer>
             <ImageCardContainer>
                 <img src={pokeImage}/>
-                <p>{props.name}</p>
             </ImageCardContainer>
+            
+              <h2>{props.name}</h2>
+            
             <ButtonContainer>
-                <button onClick={props.addPokemon}>Adicionar a pokédex</button>
-                <button 
-                onClick={()=>goToPokeDetail(props.name)
-                }>Ver detalhes</button>
+                <AddPokemon onClick={props.addPokemon} >Pegar</AddPokemon>
+                <Details  onClick={()=>goToPokeDetail(props.name)
+                }>Detalhes</Details>
             </ButtonContainer>
         </CardContainer>
 

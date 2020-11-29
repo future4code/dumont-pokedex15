@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react'
 import { useHistory } from 'react-router-dom';
 import axios from 'axios'
-import { ButtonContainer, DetailsButton, HeaderPokedex, MainContainer, PokeCard, Pokemon, RemoveButton, GoToBack } from './PokedexStyle';
+import { CardContainer, ImageCardContainer, ButtonContainer, RemoveButton, DetailsButton } from './PokedexStyle';
 
 
 
@@ -23,24 +23,23 @@ function PokeBall(props) {
     .get(props.url)
     .then((response)=>{
         setPokeImage(response.data.sprites.front_default)
-         
-            
+      
     })
     .catch((err)=>{ console.log(err.mensage)})
 }
   return (
-    <div>          
-        <PokeCard>
-          <Pokemon>
-            <img src={pokeImage} />
-            <p>{props.name}</p>
-          </Pokemon>
-          <ButtonContainer>
-            <RemoveButton onClick={props.removePokemon}>Deletar</RemoveButton>
-            <DetailsButton onClick={props.pokeDetail}>Ver Detalhes</DetailsButton>
-          </ButtonContainer>
-        </PokeCard> 
-     </div>  
+          
+          <CardContainer>
+            <ImageCardContainer>
+              <img src={pokeImage} />
+            </ImageCardContainer>
+            <h2>{props.name}</h2>
+            <ButtonContainer>
+              <RemoveButton onClick={props.removePokemon}>Deletar</RemoveButton>
+              <DetailsButton onClick={props.pokeDetail}>Detalhes</DetailsButton>
+            </ButtonContainer>
+          </CardContainer>
+          
   );
 }
 
